@@ -5,6 +5,7 @@ import { registerValidation } from "./validations/auth.js";
 import { postCreateValidation } from "./validations/post.js";
 import { checkAuth, handleValidationError } from "./utils/index.js";
 import { UserController, PostController } from './controllers/index.js'
+import cors from 'cors'
 
 mongoose
   .connect(
@@ -15,6 +16,7 @@ mongoose
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 app.use("/uploads", express.static('uploads'))
 
 const storage = multer.diskStorage({
